@@ -3,7 +3,7 @@ name: Nuclei Scan
 on:
   workflow_dispatch:
     inputs:
-      name:
+      target:
         description: "Target URL"
         required: true
         
@@ -29,7 +29,7 @@ jobs:
     - name: Run Nuclei scan on host
       run: |
         chmod +x nuclei.sh
-        ./nuclei.sh "${{ github.event.inputs.myinput }}"
+        ./nuclei.sh "${{ github.event.inputs.target }}"
 
     - name: Upload Nuclei scan results
       uses: actions/upload-artifact@v4
