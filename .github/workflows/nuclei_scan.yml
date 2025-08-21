@@ -1,0 +1,39 @@
+name: Nuclei Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Target URL"
+        required: true
+        
+
+jobs:
+  nuclei_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    
+    - name: Setup Go
+      uses: actions/setup-go@v5
+      with:
+          go-version: '1.25.0' 
+
+      
+    - name: Install Nuclei
+      run: |
+          go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+
+    - name: Run Nuclei scan on host
+      run: |
+        chmod +x nuclei.sh
+        ./nuclei.sh 
+
+    - name: Upload Nuclei scan results
+      uses: actions/upload-artifact@v4
+      with:
+        name: nuclei_results
+        path: nmap_scan_*.txt
