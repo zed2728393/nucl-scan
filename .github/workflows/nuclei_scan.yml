@@ -7,7 +7,6 @@ on:
         description: "Target URL"
         required: true
         
-
 jobs:
   nuclei_scan:
     runs-on: ubuntu-latest
@@ -36,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: nuclei_results
-        path: nmap_scan_*.txt
+        path: nuclei_results.txt
