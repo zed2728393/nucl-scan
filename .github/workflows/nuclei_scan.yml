@@ -22,10 +22,11 @@ jobs:
           go-version: '1.25.0' 
 
       
-    - name: Install Nuclei
+    - name: Install Nuclei and update templates
       run: |
           go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-
+          nuclei -ut 
+          
     - name: Run Nuclei scan on host
       run: |
         chmod +x nuclei.sh
