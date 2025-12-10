@@ -11,7 +11,7 @@ rm -f nuclei_results.txt
 # -c concurrency, maximum number of templates to be excuted together
 # maybe use -uncover and -ur and -ue 
 # -H "User-Agent: Intigriti - rm777 - Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-nuclei -u "https://$target" -rl 5 -bs 1 -c 2  -etags iot,phishing -H "Intigriti-Bug-Bounty: ID-10226f54c28c4a43b722424920c709dff1a49067004e8989d3dde9f4b7136ffa"  -s low,medium,high,critical -o nuclei_results.txt
+nuclei -u "https://$target" -rl 5 -bs 1 -c 2  -etags iot,phishing -H "X-Intigriti-Username: rm777"  -s low,medium,high,critical -o nuclei_results.txt
 
 echo "Nuclei Results file:"
 
